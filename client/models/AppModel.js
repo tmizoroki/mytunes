@@ -26,13 +26,5 @@ var AppModel = Backbone.Model.extend({
     }, this);
   },
 
-  dequeue: function(){
-      var songQueueRef = this.get("songQueue");
-
-      songQueueRef.remove(songQueueRef.at(0));
-        //We think it'll re-order [it did.]
-
-      songQueueRef.playFirst()
-  }
 
 });
