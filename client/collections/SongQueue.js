@@ -25,6 +25,11 @@ var SongQueue = Songs.extend({
       this.dequeue();
     }, this);
 
+    this.on("removeSong", function(songModelInstance){
+      this.removeSong(songModelInstance);
+    }, this);
+
+
 
 
     //How does a collection detect "alerts" from its models
@@ -41,6 +46,14 @@ var SongQueue = Songs.extend({
         //We think it'll re-order [it did.]
       if (this.length > 0){
         this.playFirst();        
+      }
+
+  },
+
+  removeSong: function(model){
+        //We think it'll re-order [it did.]
+      if (model){
+        this.remove(model);
       }
 
   },
