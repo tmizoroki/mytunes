@@ -90,10 +90,30 @@ describe('SongQueue', function() {
     });
   });
 
-  describe('removeSong', function() {
-    it('should allow users to remove tracks from the song queue ', function() {
-      //Some test expect etc etc
-    });
+  it('user can remove a track from the queue', function() {
+      
+    //Add 2 songs to songqueue
+      var songQueue = new SongQueue([songData1, songData2]);
+
+
+    // 2) Trigger dequeue on a PARTICULAR song in the queue
+      
+      songQueue.at(1).dequeue();
+
+    // 3) confirm songqueueref.length === 1
+      expect(songQueue.length).to.equal(1);
+
+
   });
+
+
+
+
+
+
+
+
+
+
 
 });
