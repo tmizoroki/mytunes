@@ -25,7 +25,7 @@ var AppView = Backbone.View.extend({
 
 
    this.playerView.on("songOver", function(){
-    this.model.dequeue();
+    this.model.get("songQueue").dequeue();
    }, this);
 
   },
