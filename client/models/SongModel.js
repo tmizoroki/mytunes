@@ -11,6 +11,16 @@ var SongModel = Backbone.Model.extend({
     //Add this instance to SongQueue
     this.trigger('enqueue', this);
 
+  },
+
+  ended: function() {
+
+    console.log("SongModel: Song ended");
+    this.trigger("ended", this);
+
+    //Do we reference the COLLECTION?
+      //by some mechanism this hits: dequeue => dequeue moves songs to new positions => playFirst();
+
   }
 
 });
