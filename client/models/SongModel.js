@@ -27,6 +27,14 @@ var SongModel = Backbone.Model.extend({
     //Add this instance to SongQueue
     this.trigger('dequeue', this);
 
+  },
+
+  removeSong: function(){
+    console.log("From SongModel: removeSong actually fired")
+    //Add this instance to SongQueue
+    this.trigger('removeSong', this);
+
   }
+
 
 });
