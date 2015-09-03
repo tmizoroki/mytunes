@@ -20,6 +20,12 @@ var SongModel = Backbone.Model.extend({
 
     //Do we reference the COLLECTION?
       //by some mechanism this hits: dequeue => dequeue moves songs to new positions => playFirst();
+  },
+
+  dequeue: function(){
+    console.log("From SongModel: dequeue actually fired")
+    //Add this instance to SongQueue
+    this.trigger('dequeue', this);
 
   }
 
