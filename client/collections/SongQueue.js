@@ -5,12 +5,34 @@ var SongQueue = Songs.extend({
 
 
   initialize: function() {
-    
+    this.on("add", function(){
+      if (this.length === 1){
+        this.playFirst();
+      }
+      
+    }, this);
+
+    this.on("ended", function(){
+
+      this.dequeue();
+    }, this);
   },
 
   playFirst: function() {
     //We should do an undefined check here too
-    this.at(0).play();
+    if (this.at(0)){
+      this.at(0).play();  
+    }
+    
+  },
+
+  dequeue: function(){
+      this.remove(this.at(0));
+        //We think it'll re-order [it did.]
+
+       
+      this.playFirst();
   }
+
 
 });
