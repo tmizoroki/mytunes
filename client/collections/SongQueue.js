@@ -17,25 +17,33 @@ var SongQueue = Songs.extend({
       this.dequeue();
     }, this);
 
+    this.on("enqueue", function(songModelInstance){
+      this.add(songModelInstance);
+    }, this);
+
+    this.on("dequeue", function(songModelInstance){
+      this.dequeue();
+    }, this);
+
+
+
     //How does a collection detect "alerts" from its models
       //What should it listen to?
   },
 
   playFirst: function() {
     //We should do an undefined check here too
-    if (this.at(0)){
-      this.at(0).play();  
-    }
-    
+      this.at(0).play();
   },
 
   dequeue: function(){
       this.remove(this.at(0));
         //We think it'll re-order [it did.]
+      if (this.length > 0){
+        this.playFirst();        
+      }
 
-       
-      this.playFirst();
-  }
+  },
 
 
 });
