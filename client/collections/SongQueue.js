@@ -12,10 +12,13 @@ var SongQueue = Songs.extend({
       
     }, this);
 
-    this.on("ended", function(){
 
+    this.on("ended", function(){
       this.dequeue();
     }, this);
+
+    //How does a collection detect "alerts" from its models
+      //What should it listen to?
   },
 
   playFirst: function() {
