@@ -17,6 +17,7 @@ describe('SongQueue', function() {
 
   afterEach(function() {
     SongQueue.prototype.playFirst.restore();
+
   });
 
   describe('when a song is added', function() {
@@ -76,6 +77,11 @@ describe('SongQueue', function() {
 
   describe('playFirst', function() {
     it('plays the first song in the queue', function() {
+      /** Bug? Passes in isolation but fails with all other specs.
+    
+      Only other place was LibraryEntryViewSpec.js on line 17 and was properly "restored"
+      with     SongModel.prototype.play.restore(); **/
+ 
       sinon.spy(SongModel.prototype, 'play');
       var songQueue = new SongQueue(songData1);
       songQueue.playFirst();
