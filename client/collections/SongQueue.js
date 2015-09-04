@@ -38,13 +38,17 @@ var SongQueue = Songs.extend({
 
   playFirst: function() {
     //We should do an undefined check here too
+    if (this.length > 0){
       this.at(0).play();
+    }
   },
 
   dequeue: function(){
       this.remove(this.at(0));
+
         //We think it'll re-order [it did.]
       if (this.length > 0){
+        console.log("fired or not?")
         this.playFirst();        
       }
 
@@ -53,7 +57,12 @@ var SongQueue = Songs.extend({
   removeSong: function(model){
         //We think it'll re-order [it did.]
       if (model){
-        this.remove(model);
+        if (this.at(0) === model){
+          this.remove(model);
+          this.playFirst();          
+        }else{
+          this.remove(model);
+        }
       }
 
   },
